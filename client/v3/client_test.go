@@ -63,6 +63,10 @@ func TestDialCancel(t *testing.T) {
 		t.Fatal(err)
 	}
 
+	go func() {
+		time.Sleep(100 * time.Second)
+	}()
+
 	// connect to ipv4 black hole so dial blocks
 	c.SetEndpoints("http://254.0.0.1:12345")
 
